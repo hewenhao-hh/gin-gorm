@@ -124,6 +124,11 @@ func GetUint(path string, defaultValue ...interface{}) uint {
 	return cast.ToUint(internalGet(path, defaultValue...))
 }
 
+// GetBool 获取 Bool 类型的配置信息
+func GetBool(path string, defaultValue ...interface{}) bool {
+	return cast.ToBool(internalGet(path, defaultValue...))
+}
+
 // GetStringMapString 获取 bool 类型的配置信息
 func GetStringMapString(path string) map[string]string {
 	return viper.GetStringMapString(path)
