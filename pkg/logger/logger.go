@@ -64,7 +64,7 @@ func getEncoder() zapcore.Encoder {
 
 	// 本地环境配置
 	if app.IsLocal() {
-		// 终端输出的关键词高亮
+		// 终端输出的关键词高亮--日志会有乱码
 		encoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
 		// 本地设置内置的 Console 解码器（支持 staktrace 换行）
 		return zapcore.NewConsoleEncoder(encoderConfig)
