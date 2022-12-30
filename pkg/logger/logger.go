@@ -186,6 +186,10 @@ func WarnString(moduleName, name, msg string) {
 	Logger.Warn(moduleName, zap.String(name, msg))
 }
 
+func ErrorString(moduleName, name, msg string) {
+	Logger.Error(moduleName, zap.String(name, msg))
+}
+
 func FatalString(moduleName, name, msg string) {
 	Logger.Fatal(moduleName, zap.String(name, msg))
 }
