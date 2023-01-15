@@ -129,7 +129,7 @@ func GetBool(path string, defaultValue ...interface{}) bool {
 	return cast.ToBool(internalGet(path, defaultValue...))
 }
 
-// GetStringMapString 获取 bool 类型的配置信息
+// GetStringMapString 获取 map 类型的配置信息
 func GetStringMapString(path string) map[string]string {
 	return viper.GetStringMapString(path)
 }
