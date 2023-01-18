@@ -4,6 +4,7 @@ package validators
 import (
 	"errors"
 	"fmt"
+	"gin-gorm/pkg/captcha"
 	"gin-gorm/pkg/database"
 	"gin-gorm/pkg/verifycode"
 	"github.com/thedevsaddam/govalidator"
@@ -71,6 +72,14 @@ func ValidatePasswordConfirm(password, passwordConfirm string, errs map[string][
 func ValidateVerifyCode(key, answer string, errs map[string][]string) map[string][]string {
 	if ok := verifycode.NewVerifyCode().CheckAnswer(key, answer); !ok {
 		errs["verify_code"] = append(errs["verify_code"], "验证码错误")
+	}
+	return errs
+}
+
+// ValidateCaptcha 自定标规则，验证『图片验证码』
+func ValidateCaptcha(id, answer string, errs map[string][]string) map[string][]string {
+	if ok := captcha.NewCaptcha().VerifyCaptcha(id, answer); !ok {
+		errs["captcha_answer"] = append(errs["captcha_answer"], "图片验证码错误")
 	}
 	return errs
 }
