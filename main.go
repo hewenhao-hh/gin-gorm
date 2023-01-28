@@ -49,7 +49,6 @@ func main() {
 		cmd.CmdServe,
 		cmd.CmdKey,
 		cmd.CmdPlay,
-		cmd.CmdTestCommand,
 		make.CmdMake,
 	)
 
