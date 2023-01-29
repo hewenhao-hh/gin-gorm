@@ -2,6 +2,7 @@
 package routes
 
 import (
+	controllers "gin-gorm/app/http/controllers/api/v1"
 	"gin-gorm/app/http/controllers/api/v1/auth"
 	"gin-gorm/app/http/middlewares"
 	"github.com/gin-gonic/gin"
@@ -42,7 +43,9 @@ func RegisterAPIRoutes(r *gin.Engine) {
 			vcc := new(auth.VerifyCodeController)
 			authGroup.POST("/verify-codes/captcha", middlewares.LimitPerRoute("20-H"), vcc.ShowCaptcha)
 			authGroup.POST("/verify-codes/phone", middlewares.LimitPerRoute("20-H"), vcc.SendUsingPhone)
-
 		}
 	}
+
+	uc := new(controllers.UsersController)
+	v1.GET("/user", middlewares.AuthJWT(), uc.CurrentUser)
 }
