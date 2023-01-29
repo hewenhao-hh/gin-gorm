@@ -2,6 +2,7 @@ package v1
 
 import (
 	"gin-gorm/app/models/topic"
+	"gin-gorm/app/policies"
 	"gin-gorm/app/requests"
 	"gin-gorm/pkg/auth"
 	"gin-gorm/pkg/response"
@@ -53,6 +54,11 @@ func (ctrl *TopicsController) Update(c *gin.Context) {
 	topicModel := topic.Get(c.Param("id"))
 	if topicModel.ID == 0 {
 		response.Abort404(c)
+		return
+	}
+
+	if ok := policies.CanModifyTopic(c, topicModel); !ok {
+		response.Abort403(c)
 		return
 	}
 
