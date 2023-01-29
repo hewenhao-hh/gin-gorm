@@ -87,6 +87,11 @@ func (ctrl *TopicsController) Delete(c *gin.Context) {
 		return
 	}
 
+	if ok := policies.CanModifyTopic(c, topicModel); !ok {
+		response.Abort403(c)
+		return
+	}
+
 	rowsAffected := topicModel.Delete()
 	if rowsAffected > 0 {
 		response.Success(c)
