@@ -3,8 +3,8 @@ package {{PackageName}}
 
 import (
 
-    "gohub/pkg/logger"
-    "gohub/pkg/database"
+    "gin-gorm/pkg/logger"
+    "gin-gorm/pkg/database"
 )
 
 type {{StructName}} struct {

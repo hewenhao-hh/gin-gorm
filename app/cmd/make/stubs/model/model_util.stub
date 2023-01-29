@@ -1,7 +1,7 @@
 package {{PackageName}}
 
 import (
-    "gohub/pkg/database"
+    "gin-gorm/pkg/database"
 )
 
 func Get(idstr string) ({{VariableName}} {{StructName}}) {
