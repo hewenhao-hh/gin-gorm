@@ -46,10 +46,19 @@ func RegisterAPIRoutes(r *gin.Engine) {
 		}
 	}
 
+	// 用户
 	uc := new(controllers.UsersController)
 	v1.GET("/user", middlewares.AuthJWT(), uc.CurrentUser)
 	usersGroup := v1.Group("/users")
 	{
 		usersGroup.GET("", uc.Index)
+	}
+
+	// 分类
+	cgc := new(controllers.CategoriesController)
+	cgcGroup := v1.Group("/categories")
+	{
+		cgcGroup.POST("", middlewares.AuthJWT(), cgc.Store)
+		cgcGroup.PUT("/:id", middlewares.AuthJWT(), cgc.Update)
 	}
 }
