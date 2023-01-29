@@ -13,8 +13,16 @@ type CategoriesController struct {
 }
 
 func (ctrl *CategoriesController) Index(c *gin.Context) {
-	categories := category.All()
-	response.Data(c, categories)
+	request := requests.PaginationRequest{}
+	if ok := requests.Validate(c, &request, requests.Pagination); !ok {
+		return
+	}
+
+	data, pager := category.Paginate(c, 10)
+	response.JSON(c, gin.H{
+		"data":  data,
+		"pager": pager,
+	})
 }
 
 func (ctrl *CategoriesController) Show(c *gin.Context) {
