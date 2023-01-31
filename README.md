@@ -1,6 +1,6 @@
 # gin-gorm
 
-本项目是基于 Gin，Gorm 设计的 API 开发框架使用 demo。
+本项目是基于 Gin，Gorm 设计的 API 开发框架代码，及其使用 demo。
 
 项目名称 gin-gorm，以论坛 API 为主题，设计的初衷是将其打造为高性能、功能齐全的 API 框架。基于 gin, cobra, viper, zap, gorm, redis, mysql, sqlite, email, jwt.
 
