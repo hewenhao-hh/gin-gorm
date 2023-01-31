@@ -4,8 +4,6 @@
 
 项目名称 gin-gorm，以论坛 API 为主题，设计的初衷是将其打造为高性能、功能齐全的 API 框架。基于 gin, cobra, viper, zap, gorm, redis, mysql, sqlite, email, jwt.
 
-程序结构说明，请见 [程序结构](https://learnku.com/courses/go-api/1.17/program-structure/11772)。
-
 ## 程序结构
 ```
 |-- README.md
